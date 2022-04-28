@@ -1,0 +1,178 @@
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: rgb(252, 199, 63); */
+    background-image: linear-gradient(to right, orange, rgb(253, 224, 0));
+    color: rgb(132, 28, 218);
+}
+
+.root {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.game-components {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    touch-action: none;
+}
+
+#score, #title {
+    display: flex;
+    flex-direction: row;
+}
+
+#score {gap: 0.5rem}
+#title {
+    gap: 1rem;
+}
+
+.toggles, .buttons {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.checkbox-item {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-item h4 {
+    margin: 0;
+}
+
+.buttons button {
+    height: 2rem;
+    width: 10rem;
+    font-weight: 700;
+    border-style: none;
+    border-radius: 0.25rem;
+}
+
+.buttons button:hover {
+    transform: scale(1.2);
+}
+
+#info {
+    position: absolute;
+    top: 1.75rem;
+    left: 1.75rem;
+    padding: 0.5rem 1rem;
+    border-style: none;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+}
+
+@media only screen and (min-width: 801px) {
+    #info:hover {
+        transform: scale(1.2);
+    }   
+}
+
+@media only screen and (max-width: 800px) {
+
+    :root {
+        --info-score-top-height: 4rem;
+        --info-button-height: 2rem; 
+    }
+
+    #info, #score {
+        top: var(--info-score-top-height); /* 4 rem */
+        transform: translateY(calc( var(--info-score-top-height) / -2) ); /* 4 rem / -2 = -2 rem */
+    }
+
+    #info {
+        position: absolute;
+        left: 1rem;
+        height: var(--info-button-height); /* = 2 rem; height of 2 rem means 1 rem on the upper half and 1 rem on the lower half */
+
+        /* We subtract 1/4th the height of this button (1/2 of the upper half height) from the info-score-top-height 
+            to make both of them (score & info) symmetrical from the top */
+
+        top: calc( var(--info-score-top-height) - calc(var(--info-button-height) / 4)); /* 4 rem - (1/4 * 2 rem) = 3.5 rem; */ 
+        width: fit-content;
+        padding: 0 0.5rem;
+    }
+
+    #score {
+        position: absolute;
+        right: 1rem;
+    }
+
+    #score p {
+        margin: 0;
+    }
+
+    .toggles {
+        flex-direction: row;
+        overflow: auto;
+    }
+
+    .checkbox-item {
+        gap: 0.2rem;
+    }
+
+    .buttons button {
+        height: 2.5rem;
+        width: 10rem;
+        font-weight: 500;
+        border-style: none;
+        border-radius: 0.25rem;
+        padding: 0.25rem;
+    }
+
+    .buttons button:hover {
+        transform: scale(1.1);
+    }
+
+    .game-components {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .checkbox-item {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+  }
